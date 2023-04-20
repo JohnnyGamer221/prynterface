@@ -26,6 +26,9 @@
 <!-- other -->
 [add_to_path]: prynterface/docs/path.md
 
+<!-- workflows -->
+[pytest_detail]: https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml
+
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
 -->
@@ -35,6 +38,7 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![Contributors][shield_contributors]][repo_main]
 [![Issues][shield_issues]][repo_main]
 [![codecov][shield_codecov]][repo_main]
+[![pytest detailed](https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml/badge.svg?branch=master)][pytest_detail]
 
 <!-- Table Of Contents -->
 <details>
