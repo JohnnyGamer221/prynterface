@@ -1,4 +1,4 @@
-<!-- Repo links -->
+<!-- repo links -->
 [repo_main]: https://github.com/domi119017/prynterface
 [repo_issues_open]: https://github.com/domi119017/prynterface/issues
 [repo_issues_new]: https://github.com/domi119017/prynterface/issues/new
@@ -10,29 +10,25 @@
 [repo_logo_combined]: misc/images/logo.png
 [project_screenshot]: misc/images/screenshot.png
 
-<!-- Shields -->
+<!-- rhields -->
 [shield_downloads]: https://img.shields.io/github/downloads/domi119017/prynterface/total
 [shield_contributors]: https://img.shields.io/github/contributors/domi119017/prynterface?color=dark-green
 [shield_issues]: https://img.shields.io/github/issues/domi119017/prynterface
 [shield_license]: https://img.shields.io/badge/License-GPLv3-blue.svg
 [shield_codecov]: https://codecov.io/gh/domi119017/prynterface/branch/master/graph/badge.svg?token=DFD15VCX40
 
-<!-- Icons -->
+<!-- icons -->
 [icon_python]: https://simpleicons.org/icons/python.svg
 
-<!-- Misc -->
-[printrun]: https://github.com/kliment/Printrun
+<!-- websites -->
+[python_download]: https://www.python.org/downloads/
 
+<!-- other -->
+[add_to_path]: prynterface/docs/path.md
 
-<!-- 
-@todo Create logos, screenshots, etc.
-logos: @domi119017
-Screenshot: https://carbon.now.sh/ @domi119017
--->
-
-<!-- Project Logo -->
+<!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
-
+-->
 Welcome! This is the **development branch** for [Prynterface][repo_main].
 
 [![License][shield_license]][repo_license]
@@ -40,59 +36,49 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![Issues][shield_issues]][repo_main]
 [![codecov][shield_codecov]][repo_main]
 
-## Table Of Contents
+<!-- Table Of Contents -->
+<details>
+<summary>Table of Contents</summary>
+<ol>
+<li>
+<a href="#about-the-project">About The Project</a>
+</li>
+<li>
+<a href="#getting-started-with-development">Getting Started with Development</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installation">Installation</a></li>
+</ul>
+</li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#contributing">Contributing</a>
+<ul>
+<li><a href="#editing-in-general">Editing in general</a></li>
+<li><a href="#the-plan">The Plan</a></li>
+<li><a href="#creating-a-pull-request">Creating A Pull Request</a></li>
+</ul>
+</li>
+<li>
+<a href="#license">License</a>
+</li>
+</ol>
+</details>
 
-- [Table Of Contents](#table-of-contents)
-- [About The Project](#about-the-project)
-  - [What about Printrun/Pronterface?](#what-about-printrunpronterface)
-  - [The Plan:](#the-plan)
-- [Getting Started with Development](#getting-started-with-development)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-  - [Editing in general](#editing-in-general)
-  - [Creating A Pull Request](#creating-a-pull-request)
-- [License](#license)
-- [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
+</details>
 
 ## About The Project
 
+<!-- @todo Project Screenshot [later]
 [![Screenshot][project_screenshot]](#getting-started)
-
+-->
 Prynterface will be a python application for interfacing with 3D printers over serial connection.
-
-### What about [Printrun/Pronterface][printrun]?
-First of all, Printrun is a great project and I highly recommend it. <br>
-However, I wanted to create a project that is more suited to my needs and that I can customize to my liking.
-
-### The Plan:
-- User interface
-  - Choice between CLI and GUI
-  - Customizable GUI
-  - Dark / Light mode
-- Interfacing with 3D printers
-  - Serial connection (USB)
-- Parsing: via pipelines similar to [Grafana Loki](https://grafana.com/oss/loki/)
-  - Detection of temp/pos/progress/etc. updates
-  - Firmware capabilities via M115 (for setting up the UI)
-  - Detection of multi line responses (UBL, M420, etc.)
-- Plotting
-  - Temperature
-  - Position
-  - Progress
-  - 3D Surface (for UBL)
-  - Anything else customizable via pipelines/configs
-- Some other stuff maybe
-
 
 ## Getting Started with Development
 The following section will guide you through the process of setting up a development environment.
 
 ### Prerequisites
-* Python 3.10 or newer
-* Python is in your PATH
+* Python 3.10 or newer (click [here][python_download] for more information)
+* Python is in your PATH (if not, [add it manually][add_to_path])
 
 ### Installation
 1. Clone the repo
@@ -147,6 +133,34 @@ python -m poetry lock
 ```
 This will update the `poetry.lock` file to include your changes.
 
+### The Plan:
+- User interface
+  - Choice between CLI and GUI
+  - Customizable GUI
+  - Dark / Light mode
+- Interfacing with 3D printers
+  - Serial connection (USB)
+- Parsing: via pipeline
+  - Detection of temp/pos/progress/etc. updates
+  - colored output for busy/waiting
+  - Firmware capabilities via M115 (for setting up the UI)
+  - Detection of multi line responses (UBL, M420, etc.)
+- Plotting
+  - Temperature
+  - Position
+  - Progress
+- Pipeline:
+  ```mermaid
+  graph LR
+  detect-->extract-->parse
+  ```
+- Configuration
+  - Config file
+  - CLI arguments
+  - GUI
+  - Custom pipeline
+  - Custom commands
+
 ### Creating A Pull Request
 
 1. Fork the Project
@@ -155,8 +169,6 @@ This will update the `poetry.lock` file to include your changes.
 4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the Branch (`git push origin feature/AmazingFeature`)
 6. Open a Pull Request
-
-
 
 ## License
 
@@ -170,3 +182,5 @@ Distributed under the GPL-3.0 License. See [LICENSE](https://github.com/domi1190
 
 * [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
 * [ImgShields](https://shields.io/)
+* [Natalie Weizenbaum](https://gist.github.com/nex3)
+* [Printrun](https://github.com/kliment/Printrun)
