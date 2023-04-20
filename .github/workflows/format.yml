@@ -10,9 +10,9 @@ jobs:
           python-version: 3.11
       - name: Set up project with poetry
         uses: knowsuchagency/poetry-install@v1
-      - name: Installing dependencies
+      - name: Activating virtual environment
         run: |
-          poetry install
+          poetry shell
       - name: Checking code
         run: |
           black --check --verbose .
