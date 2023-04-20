@@ -1,5 +1,21 @@
 import serial_asyncio
-from .printer import Printer
+from dataclasses import dataclass
+
+
+@dataclass
+class SerialPortSettings:
+    port: str
+    baudrate: int
+    bytesize: int
+    parity: str
+    stopbits: float
+    timeout: float
+    xonxoff: bool
+    rtscts: bool
+    write_timeout: float
+    dsrdtr: bool
+    inter_byte_timeout: float
+
 
 # @todo SerialIO class [todo: tests]
 # Implement tests for SerialIO class
@@ -9,8 +25,8 @@ class SerialIO:
     def __init__(self):
         self.printer = None
 
-    def set_printer(self, printer: Printer):
-        self.printer = printer
+    def apply_settings(self, sps: SerialPortSettings):
+        self.printer = sps
 
     async def connect(self):
         if self.printer is None:
