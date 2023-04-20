@@ -50,12 +50,11 @@ jobs:
           - ubuntu-latest
           - windows-latest
         python-version:
+          - "3.7"
           - "3.8"
           - "3.9"
           - "3.10"
           - "3.11"
-          - allow_failures: "3.12-dev"
-          - allow_failures: "3.7"
 
     steps:
       - uses: actions/checkout@master
@@ -68,11 +67,14 @@ jobs:
         run: |
           python -m pip install poetry==1.4.2
       - name: Configure poetry
+        continue-on-error: ${{ matrix.python-version == '3.7' || matrix.python-version == '3.12' }}
         run: |
           python -m poetry config virtualenvs.in-project true
       - name: Install dependencies
+        continue-on-error: ${{ matrix.python-version == '3.7' || matrix.python-version == '3.12' }}
         run: |
           python -m poetry install
       - name: Run tests
+        continue-on-error: ${{ matrix.python-version == '3.7' || matrix.python-version == '3.12' }}
         run: |
           python -m poetry run python -m pytest
