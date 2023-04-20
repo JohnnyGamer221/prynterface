@@ -17,6 +17,9 @@
 [shield_license]: https://img.shields.io/badge/License-GPLv3-blue.svg
 [shield_codecov]: https://codecov.io/gh/domi119017/prynterface/branch/master/graph/badge.svg?token=DFD15VCX40
 
+<!-- Icons -->
+[icon_python]: https://simpleicons.org/icons/python.svg
+
 <!-- Misc -->
 [printrun]: https://github.com/kliment/Printrun
 
@@ -43,12 +46,12 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 - [About The Project](#about-the-project)
   - [What about Printrun/Pronterface?](#what-about-printrunpronterface)
   - [The Plan:](#the-plan)
-- [Building With](#building-with)
-- [Getting Started (Developing)](#getting-started-developing)
+- [Getting Started with Development](#getting-started-with-development)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
+  - [Editing in general](#editing-in-general)
   - [Creating A Pull Request](#creating-a-pull-request)
 - [License](#license)
 - [Authors](#authors)
@@ -84,24 +87,37 @@ However, I wanted to create a project that is more suited to my needs and that I
 - Some other stuff maybe
 
 
-## Building With
-TODO
-<!-- @todo Add badges and info -->
-
-## Getting Started (Developing)
-TODO
-
-<!-- @todo Getting Started (Developing) Description -->
+## Getting Started with Development
+The following section will guide you through the process of setting up a development environment.
 
 ### Prerequisites
-TODO
-
-<!-- @todo Prerequisites Description -->
+* Python 3.10 or newer
+* Python is in your PATH
 
 ### Installation
-TODO
+1. Clone the repo
+   ```sh
+   git clone https://github.com/domi119017/prynterface
+    ```
+2. Upgrade pip
+   ```sh
+   python -m pip install --upgrade pip
+   ```
+3. Install poetry
+   ```sh
+   python -m pip install poetry
+    ```
+4. Poetry does the rest
+   ```sh
+   python -m poetry install
+   ```
 
-<!-- @todo Installation Description -->
+    You should now have a virtual environment with all the necessary dependencies installed.
+    To activate the virtual environment, run:
+    ```sh
+    python -m poetry shell
+    ```
+    After that, you can run any of the project files.
 
 ## Roadmap
 
@@ -110,17 +126,37 @@ See the [open issues][repo_issues_open] for a list of proposed features (and kno
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/domi119017/prynterface/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
+* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/domi119017/prynterface/issues/new) to discuss it, or directly create a pull request.
+
+### Editing in general
+
+This project uses poetry for dependency management. <br>
+Adding a new dependency is easy, but you have to do it in the right way.
+- If you want to add a new dependency (after discussing it), run:
+  ```sh
+  python -m poetry add <dependency>
+  ```
+- If the dependency is only needed for development, run:
+  ```sh
+  python -m poetry add -G dev <dependency>
+  ```
+
+Before committing your changes, make sure to run:
+```sh
+python -m poetry lock
+```
+This will update the `poetry.lock` file to include your changes.
 
 ### Creating A Pull Request
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+3. Make some changes. See [Editing in general](#editing-in-general)
+4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the Branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
+
+
 
 ## License
 
@@ -132,6 +168,5 @@ Distributed under the GPL-3.0 License. See [LICENSE](https://github.com/domi1190
 
 ## Acknowledgements
 
-* [ShaanCoding](https://github.com/ShaanCoding/)
 * [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
 * [ImgShields](https://shields.io/)
