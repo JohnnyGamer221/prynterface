@@ -42,9 +42,6 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 <ol>
 <li>
 <a href="#about-the-project">About The Project</a>
-<ul>
-<li><a href="#the-plan">The Plan</a></li>
-</ul>
 </li>
 <li>
 <a href="#getting-started-with-development">Getting Started with Development</a>
@@ -57,8 +54,12 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 <li><a href="#contributing">Contributing</a>
 <ul>
 <li><a href="#editing-in-general">Editing in general</a></li>
+<li><a href="#the-plan">The Plan</a></li>
 <li><a href="#creating-a-pull-request">Creating A Pull Request</a></li>
 </ul>
+</li>
+<li>
+<a href="#license">License</a>
 </li>
 </ol>
 </details>
@@ -71,35 +72,6 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![Screenshot][project_screenshot]](#getting-started)
 -->
 Prynterface will be a python application for interfacing with 3D printers over serial connection.
-
-### The Plan:
-- User interface
-  - Choice between CLI and GUI
-  - Customizable GUI
-  - Dark / Light mode
-- Interfacing with 3D printers
-  - Serial connection (USB)
-- Parsing: via pipeline
-  - Detection of temp/pos/progress/etc. updates
-  - colored output for busy/waiting
-  - Firmware capabilities via M115 (for setting up the UI)
-  - Detection of multi line responses (UBL, M420, etc.)
-- Plotting
-  - Temperature
-  - Position
-  - Progress
-- Pipeline:
-  ```mermaid
-  graph LR
-  detect-->extract-->parse
-  ```
-- Configuration
-  - Config file
-  - CLI arguments
-  - GUI
-  - Custom pipeline
-  - Custom commands
-
 
 ## Getting Started with Development
 The following section will guide you through the process of setting up a development environment.
@@ -161,6 +133,34 @@ python -m poetry lock
 ```
 This will update the `poetry.lock` file to include your changes.
 
+### The Plan:
+- User interface
+  - Choice between CLI and GUI
+  - Customizable GUI
+  - Dark / Light mode
+- Interfacing with 3D printers
+  - Serial connection (USB)
+- Parsing: via pipeline
+  - Detection of temp/pos/progress/etc. updates
+  - colored output for busy/waiting
+  - Firmware capabilities via M115 (for setting up the UI)
+  - Detection of multi line responses (UBL, M420, etc.)
+- Plotting
+  - Temperature
+  - Position
+  - Progress
+- Pipeline:
+  ```mermaid
+  graph LR
+  detect-->extract-->parse
+  ```
+- Configuration
+  - Config file
+  - CLI arguments
+  - GUI
+  - Custom pipeline
+  - Custom commands
+
 ### Creating A Pull Request
 
 1. Fork the Project
@@ -169,8 +169,6 @@ This will update the `poetry.lock` file to include your changes.
 4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the Branch (`git push origin feature/AmazingFeature`)
 6. Open a Pull Request
-
-
 
 ## License
 
