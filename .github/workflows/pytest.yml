@@ -18,8 +18,7 @@ jobs:
       - name: Set up project with poetry
         uses: knowsuchagency/poetry-install@v1
       - name: Activating virtual environment
-        run: |
-          poetry shell
+        uses: syphar/restore-virtualenv@v1
       - name: Run pytest
         run: |
           python -m pytest
@@ -34,8 +33,7 @@ jobs:
       - name: Set up project with poetry
         uses: knowsuchagency/poetry-install@v1
       - name: Activating virtual environment
-        run: |
-          poetry shell
+        uses: syphar/restore-virtualenv@v1
       - name: Create coverage report
         run: |
           python -m pytest --cov-report=xml --cov=.
