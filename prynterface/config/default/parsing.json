@@ -1,0 +1,50 @@
+{
+	"echo": {
+		"detector": {
+			"expression": "(?:echo:.+)(?=\\s)\\n*",
+			"type": "line"
+		},
+		"extractor": {
+			"expression": "(?<=echo:)(.+)",
+			"flags": "i",
+			"match_type": "findall"
+		},
+		"parser": {
+			"functions": [
+				"parse_echo"
+			]
+		}
+	},
+	"temp_info": {
+		"detector": {
+			"expression": "(?:\\bT\\d*:.*\\n+)",
+			"type": "line"
+		},
+		"extractor": {
+			"expression": "(?:^ *)(?:(?:([@\\w]+\\d*):((?:-?\\d+(?:\\.\\d+)?(?=\\D))|(?:\\?)))(?:\\s*\\\/((?:-?\\d+(?:\\.\\d+)?(?=\\D))|(?:\\?)))?(?: +|\\n))+",
+			"flags": "i",
+			"match_type": "findall"
+		},
+		"parser": {
+			"functions": [
+				"parse_temp_info"
+			]
+		}
+	},
+	"m48-z-repeatability": {
+		"detector": {
+			"expression": "(?:M48 Z-Probe Repeatability Test(?:.*\\n)+?Finished(?:.*\\n)+?ok\\n*)",
+			"type": "block"
+		},
+		"extractor": {
+			"expression": "(?:\\bFinished[.!]?\\B.*\\n*)([a-zA-Z@ ]+(?=\\s*:\\s*[?\\d]))(?:\\s*:\\s*)(-?\\d+(?:\\.\\d+)?(?=\\D))(?:.|\\n)*(?=ok)",
+			"flags": "i",
+			"match_type": "findall"
+		},
+		"parser": {
+			"functions": [
+				"parse_m48_z_repeatability"
+			]
+		}
+	}
+}
