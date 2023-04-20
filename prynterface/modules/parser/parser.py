@@ -1,7 +1,7 @@
 from ..configuration.parsing import Config
 from .matcher import Detector, Extractor
 
-# @todo Parser and Controller classes [todo: implement][todo: tests]
+# @todo Parser and Controller classes [implement][tests]
 #       - Controller is responsible for configuring and moving data between detector, extractor and parser
 #       - Parser is responsible for returning a dict of named values from the match groups extracted by the extractor
 

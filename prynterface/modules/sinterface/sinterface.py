@@ -17,7 +17,7 @@ class SerialPortSettings:
     inter_byte_timeout: float
 
 
-# @todo SerialIO class [todo: tests]
+# @todo SerialIO class [tests]
 # Implement tests for SerialIO class
 
 
