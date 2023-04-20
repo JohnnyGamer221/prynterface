@@ -54,9 +54,9 @@ jobs:
           - "3.9"
           - "3.10"
           - "3.11"
-        allow_failures:
-          - python-version: "3.7"
-          - python-version: "3.8"
+          - allow_failures:
+              - "3.7"
+              - "3.8"
 
     steps:
       - uses: actions/checkout@master
