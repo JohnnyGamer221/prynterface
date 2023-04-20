@@ -10,12 +10,13 @@
 [repo_logo_combined]: misc/images/logo.png
 [project_screenshot]: misc/images/screenshot.png
 
-<!-- rhields -->
+<!-- shields -->
 [shield_downloads]: https://img.shields.io/github/downloads/domi119017/prynterface/total
 [shield_contributors]: https://img.shields.io/github/contributors/domi119017/prynterface?color=dark-green
 [shield_issues]: https://img.shields.io/github/issues/domi119017/prynterface
 [shield_license]: https://img.shields.io/badge/License-GPLv3-blue.svg
 [shield_codecov]: https://codecov.io/gh/domi119017/prynterface/branch/master/graph/badge.svg?token=DFD15VCX40
+[shield_dependencys]: https://img.shields.io/librariesio/github/domi119017/prynterface
 
 <!-- icons -->
 [icon_python]: https://simpleicons.org/icons/python.svg
@@ -26,8 +27,11 @@
 <!-- other -->
 [add_to_path]: prynterface/docs/path.md
 
-<!-- workflows -->
-[pytest_detail]: https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml
+<!-- workflow shields -->
+[pytest_quick]: https://github.com/domi119017/prynterface/actions/workflows/pytest_quick.yml/badge.svg
+[pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.ubuntu-latest
+[pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.windows-latest
+
 
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
@@ -37,8 +41,16 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![License][shield_license]][repo_license]
 [![Contributors][shield_contributors]][repo_main]
 [![Issues][shield_issues]][repo_main]
-[![codecov][shield_codecov]][repo_main]
-[![pytest detailed](https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml/badge.svg?branch=master)][pytest_detail]
+
+![tests][pytest_quick]
+![Codecov](https://img.shields.io/codecov/c/gh/domi119017/prynterface)
+![Dependencies][shield_dependencys]
+
+Tested Versions:
+| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  |
+| ----------- | ---------------------------------- |
+| **Windows** | ![pytest][pytest_versions_windows] |
+
 
 <!-- Table Of Contents -->
 <details>
