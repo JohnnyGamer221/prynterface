@@ -32,7 +32,6 @@
 [pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.ubuntu-latest
 [pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.windows-latest
 
-
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
 -->
