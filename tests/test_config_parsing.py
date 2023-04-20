@@ -6,4 +6,4 @@ from .context import parsing
 
 CONFIG_DIR = "tests/configs/parsing"
 
-# @todo write tests for parseconfig/parsing.py [todo: tests]
+# @todo write tests for configuration/parsing.py [tests]

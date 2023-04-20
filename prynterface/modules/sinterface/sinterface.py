@@ -1,7 +1,7 @@
 import serial_asyncio
 from .printer import Printer
 
-# @todo SerialIO class [todo: tests]
+# @todo SerialIO class [tests]
 # Implement tests for SerialIO class
 
 
