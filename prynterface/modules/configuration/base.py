@@ -24,8 +24,9 @@ class ConfigParser:
     ) -> None:
         """
         Args:
-                config (str):	File name of the config file with extension. If not supplied it needs to be set with set_file.
-                                                Must be json. e.g. "parsing.json", "serial.json" etc.
+                config (str):   File name of the config file with extension.
+                                If not supplied it needs to be set with set_file.
+                                Must be json. e.g. "parsing.json", "serial.json" etc.
         """
         self.config_dir = config_dir if config_dir is not None else DEFAULT_CONFIG_DIR
         self.config_type = "user"
