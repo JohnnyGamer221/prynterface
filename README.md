@@ -22,7 +22,9 @@
 
 <!-- websites -->
 [python_download]: https://www.python.org/downloads/
-[add_to_path]: https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7
+
+<!-- other -->
+[add_to_path]: prynterface/docs/path.md
 
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
@@ -183,3 +185,4 @@ Distributed under the GPL-3.0 License. See [LICENSE](https://github.com/domi1190
 * [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
 * [ImgShields](https://shields.io/)
 * [Natalie Weizenbaum](https://gist.github.com/nex3)
+* [Printrun](https://github.com/kliment/Printrun)
