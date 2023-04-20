@@ -21,6 +21,7 @@ class ConfigParser:
     def __init__(
         self, config_fn: str | None = None, config_dir: str | None = None
     ) -> None:
+        raise Exception()
         """
         Args:
                 config (str):	File name of the config file with extension. If not supplied it needs to be set with set_file.
