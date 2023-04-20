@@ -1,6 +1,5 @@
 from ..configuration.parsing import Config
 from .matcher import Detector, Extractor
-from .helper.functions import *
 
 # @todo Parser and Controller classes [todo: implement][todo: tests]
 #       - Controller is responsible for configuring and moving data between detector, extractor and parser
