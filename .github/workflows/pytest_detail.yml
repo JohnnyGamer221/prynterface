@@ -48,6 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        experimental: [false]
         os:
           - ubuntu-latest
           - windows-latest
@@ -56,20 +57,19 @@ jobs:
           - "3.9"
           - "3.10"
           - "3.11"
-        experimental: [false]
         include:
-          - os: ubuntu-latest
+          - experimental: true
+            os: ubuntu-latest
             python-version: "3.7"
-            experimental: true
-          - os: ubuntu-latest
+          - experimental: true
+            os: ubuntu-latest
             python-version: "3.12"
-            experimental: true
-          - os: windows-latest
+          - experimental: true
+            os: windows-latest
             python-version: "3.7"
-            experimental: true
-          - os: windows-latest
+          - experimental: true
+            os: windows-latest
             python-version: "3.12"
-            experimental: true
 
     steps:
       - uses: actions/checkout@master
