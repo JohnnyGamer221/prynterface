@@ -27,7 +27,10 @@
 [add_to_path]: prynterface/docs/path.md
 
 <!-- workflows -->
-[pytest_detail]: https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml
+[pytest_quick]: https://github.com/domi119017/prynterface/actions/workflows/pytest_quick.yml/badge.svg
+[pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.ubuntu-latest
+[pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.windows-latest
+
 
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
@@ -37,8 +40,21 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![License][shield_license]][repo_license]
 [![Contributors][shield_contributors]][repo_main]
 [![Issues][shield_issues]][repo_main]
-[![codecov][shield_codecov]][repo_main]
-[![pytest detailed](https://github.com/domi119017/prynterface/actions/workflows/pytest_detail.yml/badge.svg?branch=master)][pytest_detail]
+
+![tests][pytest_quick]
+![Codecov](https://img.shields.io/codecov/c/gh/domi119017/prynterface)
+
+<details>
+<summary>Supported versions</summary>
+
+### Tested on Ubuntu
+![pytest][pytest_versions_ubuntu]
+
+### Tested on Windows
+![pytest][pytest_versions_windows]
+
+</details>
+
 
 <!-- Table Of Contents -->
 <details>
