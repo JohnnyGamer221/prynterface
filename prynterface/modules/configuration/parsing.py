@@ -1,7 +1,7 @@
 from .base import ConfigParser
 
 
-class Config(ConfigParser):
+class ParsingConfig(ConfigParser):
     """Handles the config for the parser module.
     Config must have the following structure:
     {
