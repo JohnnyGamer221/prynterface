@@ -32,8 +32,10 @@
 [pytest_versions_experimental_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.ubuntu-latest
 [pytest_versions_experimental_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.windows-latest
 
+<!-- Repo logo -->
 
-[![Logo][repo_logo]][repo_main]
+<img src="misc/images/logo.png" alt="Logo" width="80" height="80">
+
 
 Welcome! This is the **development branch** for [Prynterface][repo_main].
 
