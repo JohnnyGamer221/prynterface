@@ -49,6 +49,7 @@ jobs:
       fail-fast: false
       matrix:
         experimental: [false]
+        tag: [versions]
         os:
           - ubuntu-latest
           - windows-latest
@@ -59,15 +60,19 @@ jobs:
           - "3.11"
         include:
           - experimental: true
+            tag: [versions]
             os: ubuntu-latest
             python-version: "3.7"
           - experimental: true
+            tag: [versions]
             os: ubuntu-latest
             python-version: "3.12"
           - experimental: true
+            tag: [versions]
             os: windows-latest
             python-version: "3.7"
           - experimental: true
+            tag: [versions]
             os: windows-latest
             python-version: "3.12"
 

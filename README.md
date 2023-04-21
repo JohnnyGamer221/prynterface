@@ -29,8 +29,10 @@
 
 <!-- workflow shields -->
 [pytest_quick]: https://github.com/domi119017/prynterface/actions/workflows/pytest_quick.yml/badge.svg
-[pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.ubuntu-latest
-[pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.windows-latest
+[pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.false.ubuntu-latest
+[pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.false.windows-latest
+[pytest_versions_experimental_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.ubuntu-latest
+[pytest_versions_experimental_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.windows-latest
 
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
@@ -45,10 +47,19 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 ![Codecov](https://img.shields.io/codecov/c/gh/domi119017/prynterface)
 ![Dependencies][shield_dependencys]
 
-Tested Versions:
-| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  |
-| ----------- | ---------------------------------- |
-| **Windows** | ![pytest][pytest_versions_windows] |
+
+<!-- Testing details -->
+<details>
+<summary> Testing details </summary>
+
+
+| OS          | Supported versions                 | Experimental                                    |
+| ----------- | ---------------------------------- | ----------------------------------------------- |
+| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  | ![pytest][pytest_versions_experimental_ubuntu]  |
+| **Windows** | ![pytest][pytest_versions_windows] | ![pytest][pytest_versions_experimental_windows] |
+
+
+</details>
 
 
 <!-- Table Of Contents -->
