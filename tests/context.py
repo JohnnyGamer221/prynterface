@@ -7,3 +7,4 @@ from prynterface.modules.sinterface import sinterface
 from prynterface.modules.ui import ui
 from prynterface.modules.ui.cli import cli
 from prynterface.modules.ui.gui import gui
+from prynterface.prynterface import import_test

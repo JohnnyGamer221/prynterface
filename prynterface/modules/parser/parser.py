@@ -1,4 +1,4 @@
-from ..configuration.parsing import Config
+from ..configuration.parsing import ParsingConfig
 from .matcher import Detector, Extractor
 
 # @todo Parser and Controller classes [implement][tests]
@@ -12,8 +12,8 @@ class ParserHelper:
 
 
 class Parser:
-    def __init__(self) -> None:
-        self.CONFIG = Config()
+    def __init__(self, configuration: ParsingConfig) -> None:
+        self.CONFIG = configuration
         self.detector = Detector(self.CONFIG.detector_config())
         self.extractor = Extractor(self.CONFIG.extractor_config())
         self.parser = ParserHelper(self.CONFIG.parser_config())
