@@ -53,10 +53,10 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 <summary> Testing details </summary>
 
 
-| OS  | Supported versions | <!-- Experimental | --> |
-| --- | ------------------ |<!-- ----------------------------------------------- | -->
-| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  | <!-- ![pytest][pytest_versions_experimental_ubuntu]  | -->
-| **Windows** | ![pytest][pytest_versions_windows] | <!-- ![pytest][pytest_versions_experimental_windows] | -->
+| OS          | Supported versions                 |
+| ----------- | ---------------------------------- |
+| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  |
+| **Windows** | ![pytest][pytest_versions_windows] |
 
 
 </details>
