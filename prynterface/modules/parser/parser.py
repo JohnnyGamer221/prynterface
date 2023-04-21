@@ -24,6 +24,6 @@ class Parser:
 
     def __init__(self, configuration: ParsingConfig) -> None:
         self.config = configuration
-        self.detector = Detector(self.config.detector())
-        self.extractor = Extractor(self.config.extractor())
-        self.parser = Converter(self.config.parser())
+        self.detector = Detector(self.config.detectorcfg())
+        self.extractor = Extractor(self.config.extractorcfg())
+        self.parser = Converter(self.config.parsercfg())
