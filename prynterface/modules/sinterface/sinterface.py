@@ -24,6 +24,7 @@ class SerialPortSettings:
 class SerialIO:
     def __init__(self):
         self.printer = None
+        self.linenumber = 0
 
     def apply_settings(self, sps: SerialPortSettings):
         self.printer = sps
@@ -57,6 +58,8 @@ class SerialIO:
 
     async def readline(self):
         try:
-            return await self.reader.readline()
+            self.linenumber += 1
+            return await self.reader.readline(), self.linenumber
         except Exception as e:
+            self.linenumber -= 1
             raise e

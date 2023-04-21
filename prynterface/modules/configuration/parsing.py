@@ -6,9 +6,9 @@ class ParsingConfig(ConfigParser):
     Config must have the following structure:
     {
         "identifier": {
-            "detector": {},
-            "extractor": {},
-            "parser": {}
+            "detector": {...},
+            "extractor": {...},
+            "parser": {...}
         }
     }
     """
@@ -19,19 +19,19 @@ class ParsingConfig(ConfigParser):
     # @todo Add input validation
     def __init__(self) -> None:
         super().__init__(config_fn="parsing.json")
-        self.parser = {}
-        self.detector = {}
-        self.extractor = {}
+        self.parser_cfg = {}
+        self.detector_cfg = {}
+        self.extractor_cfg = {}
         for key in self.config:
-            self.parser[key] = self.config[key]["parser"]
-            self.detector[key] = self.config[key]["detector"]
-            self.extractor[key] = self.config[key]["extractor"]
+            self.parser_cfg[key] = self.config[key]["parser"]
+            self.detector_cfg[key] = self.config[key]["detector"]
+            self.extractor_cfg[key] = self.config[key]["extractor"]
 
-    def parser_config(self) -> dict:
-        return self.parser
+    def parser(self) -> dict:
+        return self.parser_cfg
 
-    def detector_config(self) -> dict:
-        return self.detector
+    def detector(self) -> dict:
+        return self.detector_cfg
 
-    def extractor_config(self) -> dict:
-        return self.extractor
+    def extractor(self) -> dict:
+        return self.extractor_cfg
