@@ -1,19 +1,29 @@
 from ..configuration.parsing import ParsingConfig
 from .matcher import Detector, Extractor
 
-# @todo Parser and Controller classes [implement][tests]
-#       - Controller is responsible for configuring and moving data between detector, extractor and parser
-#       - Parser is responsible for returning a dict of named values from the match groups extracted by the extractor
 
+class Converter:
+    """
+    @todo Implement Parser Helper class
+    - converts regex match groups to dict
+    - data types and annotations etc are defined in config
+    - return parsed data to Parser Controller
+    """
 
-class ParserHelper:
     def __init__(self, parser_config: dict) -> None:
         pass
 
 
 class Parser:
+    """
+    @todo Implement Parser Controller class
+    - set up detector, extractor, parser
+    - manage pipeline
+    - return parsed data to UI Controller
+    """
+
     def __init__(self, configuration: ParsingConfig) -> None:
-        self.CONFIG = configuration
-        self.detector = Detector(self.CONFIG.detector_config())
-        self.extractor = Extractor(self.CONFIG.extractor_config())
-        self.parser = ParserHelper(self.CONFIG.parser_config())
+        self.config = configuration
+        self.detector = Detector(self.config.detector())
+        self.extractor = Extractor(self.config.extractor())
+        self.parser = Converter(self.config.parser())
