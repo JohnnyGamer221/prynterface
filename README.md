@@ -5,9 +5,7 @@
 [repo_releases]: https://github.com/domi119017/prynterface/releases
 <!-- links to files -->
 [repo_license]: LICENSE
-[repo_logo_icon]: misc/images/logo_icon.png
-[repo_logo_text]: misc/images/logo_text.png
-[repo_logo_combined]: misc/images/logo.png
+[repo_logo]: misc/images/logo_icon.png
 [project_screenshot]: misc/images/screenshot.png
 
 <!-- shields -->
@@ -34,9 +32,9 @@
 [pytest_versions_experimental_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.ubuntu-latest
 [pytest_versions_experimental_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.windows-latest
 
-<!-- @todo Project Logo 
-[![Logo][repo_logo_combined]][repo_main]
--->
+
+[![Logo][repo_logo]][repo_main]
+
 Welcome! This is the **development branch** for [Prynterface][repo_main].
 
 [![License][shield_license]][repo_license]
