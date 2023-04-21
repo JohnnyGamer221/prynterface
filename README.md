@@ -103,7 +103,7 @@ Prynterface will be a python application for interfacing with 3D printers over s
 The following section will guide you through the process of setting up a development environment.
 
 ### Prerequisites
-* Python 3.10 or newer (click [here][python_download] for more information)
+* Python 3.8 or newer (click [here][python_download] for more information)
 * Python is in your PATH (if not, [add it manually][add_to_path])
 
 ### Installation
