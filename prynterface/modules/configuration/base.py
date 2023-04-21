@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Union
 
 # Path: prynterface/src/parser/parseconfig.py
 # Config: prynterface/config/default/{config_fn}.json as default
@@ -19,12 +20,13 @@ class ConfigParser:
     """Base class for handling loading and storing of config files."""
 
     def __init__(
-        self, config_fn: str | None = None, config_dir: str | None = None
+        self, config_fn: Union[str, None] = None, config_dir: Union[str, None] = None
     ) -> None:
         """
         Args:
-                config (str):	File name of the config file with extension. If not supplied it needs to be set with set_file.
-                                                Must be json. e.g. "parsing.json", "serial.json" etc.
+                config (str):   File name of the config file with extension.
+                                If not supplied it needs to be set with set_file.
+                                Must be json. e.g. "parsing.json", "serial.json" etc.
         """
         self.config_dir = config_dir if config_dir is not None else DEFAULT_CONFIG_DIR
         self.config_type = "user"

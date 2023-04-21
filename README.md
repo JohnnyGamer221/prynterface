@@ -10,12 +10,13 @@
 [repo_logo_combined]: misc/images/logo.png
 [project_screenshot]: misc/images/screenshot.png
 
-<!-- rhields -->
+<!-- shields -->
 [shield_downloads]: https://img.shields.io/github/downloads/domi119017/prynterface/total
 [shield_contributors]: https://img.shields.io/github/contributors/domi119017/prynterface?color=dark-green
 [shield_issues]: https://img.shields.io/github/issues/domi119017/prynterface
 [shield_license]: https://img.shields.io/badge/License-GPLv3-blue.svg
 [shield_codecov]: https://codecov.io/gh/domi119017/prynterface/branch/master/graph/badge.svg?token=DFD15VCX40
+[shield_dependencys]: https://img.shields.io/librariesio/github/domi119017/prynterface
 
 <!-- icons -->
 [icon_python]: https://simpleicons.org/icons/python.svg
@@ -26,6 +27,13 @@
 <!-- other -->
 [add_to_path]: prynterface/docs/path.md
 
+<!-- workflow shields -->
+[pytest_quick]: https://github.com/domi119017/prynterface/actions/workflows/pytest_quick.yml/badge.svg
+[pytest_versions_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.false.ubuntu-latest
+[pytest_versions_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.false.windows-latest
+[pytest_versions_experimental_ubuntu]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.ubuntu-latest
+[pytest_versions_experimental_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.windows-latest
+
 <!-- @todo Project Logo 
 [![Logo][repo_logo_combined]][repo_main]
 -->
@@ -34,7 +42,25 @@ Welcome! This is the **development branch** for [Prynterface][repo_main].
 [![License][shield_license]][repo_license]
 [![Contributors][shield_contributors]][repo_main]
 [![Issues][shield_issues]][repo_main]
-[![codecov][shield_codecov]][repo_main]
+
+![tests][pytest_quick]
+![Codecov](https://img.shields.io/codecov/c/gh/domi119017/prynterface)
+![Dependencies][shield_dependencys]
+
+
+<!-- Testing details -->
+<details>
+<summary> Testing details </summary>
+
+
+| OS          | Supported versions                 | Experimental                                    |
+| ----------- | ---------------------------------- | ----------------------------------------------- |
+| **Ubuntu**  | ![pytest][pytest_versions_ubuntu]  | ![pytest][pytest_versions_experimental_ubuntu]  |
+| **Windows** | ![pytest][pytest_versions_windows] | ![pytest][pytest_versions_experimental_windows] |
+
+
+</details>
+
 
 <!-- Table Of Contents -->
 <details>

@@ -1,10 +1,10 @@
-name: pytest runner
+name: pytest detailed
 
 on:
   push:
-    branches: [dev]
+    branches: [master]
   pull_request:
-    branches: [dev, master]
+    branches: [master]
 
 jobs:
   coverage:
@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m poetry config virtualenvs.in-project true
       - name: Cache the virtualenv
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ./.venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
@@ -44,10 +44,38 @@ jobs:
   test:
     needs: coverage
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: ["3.10", "3.11"]
+        experimental: [false]
+        # tag: [versions]
+        os:
+          - ubuntu-latest
+          - windows-latest
+        python-version:
+          - "3.8"
+          - "3.9"
+          - "3.10"
+          - "3.11"
+        include:
+          - experimental: true
+            # tag: [versions]
+            os: ubuntu-latest
+            python-version: "3.7"
+          - experimental: true
+            # tag: [versions]
+            os: ubuntu-latest
+            python-version: "3.12"
+          - experimental: true
+            # tag: [versions]
+            os: windows-latest
+            python-version: "3.7"
+          - experimental: true
+            # tag: [versions]
+            os: windows-latest
+            python-version: "3.12"
+
     steps:
       - uses: actions/checkout@master
       - name: Set up Python ${{ matrix.python-version }}
@@ -61,11 +89,6 @@ jobs:
       - name: Configure poetry
         run: |
           python -m poetry config virtualenvs.in-project true
-      - name: Cache the virtualenv
-        uses: actions/cache@v2
-        with:
-          path: ./.venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
         run: |
           python -m poetry install
