@@ -5,7 +5,7 @@
 [repo_releases]: https://github.com/domi119017/prynterface/releases
 <!-- links to files -->
 [repo_license]: LICENSE
-[repo_logo]: misc/images/logo_icon.png
+[repo_logo]: misc/images/logo.svg
 [project_screenshot]: misc/images/screenshot.png
 
 <!-- shields -->
