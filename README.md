@@ -33,9 +33,7 @@
 [pytest_versions_experimental_windows]: http://github-actions.40ants.com/domi119017/prynterface/matrix.svg?only=pytest%20detailed.test.true.windows-latest
 
 <!-- Repo logo -->
-
 <img src="misc/images/logo.png" alt="Logo" width="80" height="80">
-
 
 Welcome! This is the **development branch** for [Prynterface][repo_main].
 
