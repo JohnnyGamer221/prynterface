@@ -1,5 +1,6 @@
 import re
 from dataclasses import dataclass
+from typing import Union
 
 
 @dataclass
@@ -63,11 +64,11 @@ class MatchWithConvertedData:
 
 @dataclass
 class Value:
-    name: str | None
+    name: Union[str, None]
     no_value: bool
-    sign: str | None
-    pre_decimal: int | None
-    post_decimal: int | None
+    sign: Union[str, None]
+    pre_decimal: Union[int, None]
+    post_decimal: Union[int, None]
 
     def __str__(self) -> str:
         if self.no_value:
