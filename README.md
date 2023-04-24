@@ -159,6 +159,10 @@ python -m poetry lock
 ```
 This will update the `poetry.lock` file to include your changes.
 
+#### If you use vscode:
+- Set your python interpreter to the one in the virtual environment
+- Coverage gutters is a nice extension to see which lines are covered by tests
+
 ### The Plan:
 - User interface
   - Choice between CLI and GUI
