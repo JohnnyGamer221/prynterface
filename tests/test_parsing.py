@@ -30,35 +30,18 @@ def configfixture() -> parsing.ParsingConfig:
     return parsing.ParsingConfig(PARSING_CONFIG_PATH, CONFIG_DIR)
 
 
-@pytest.fixture
-def parser_fixture(config: parsing.ParsingConfig) -> parser.Parser:
-    return parser_fixture.Parser(configfixture())
-
-
-def test_simple_parsing():
-    test_parser = parser.Parser(configfixture())
+def test_simple_parsing(configfixture):
+    test_parser = parser.Parser(configfixture)
     lines = TEST_DATA.splitlines()
     for line in lines:
-        test_parser.add_line(line.encode())
+        test_parser.add_line(line.encode() + b"\n")
 
-    test_parser.detect()
-    returned_data = test_parser.get_data()[0]
-    assert returned_data["test1"] == {
-        "type": "dict-float",
-        "line-start": 3,
-        "values": {"TestOne": 42, "TestTwo": 43, "TestThree": 42069},
-    }
-    assert returned_data["test2"] == {
-        "type": "some-advanced-data",
-        "line-start": 5,
-        "values": {
-            "mesh": [
-                [0, 1, 2, 3, 4],
-                [5, 6, 7, 8, 9],
-                [1, 2, 3, 4, 5],
-                [6, 7, 8, 9, 0],
-            ],
-            "coords": {"X": 50, "Y": 60, "Z": 70},
-            "status": False,
-        },
-    }
+    returned_data = test_parser.parse()
+    with open("tests/test_log.txt", "w") as f:
+        f.write(str(returned_data))
+    assert isinstance(returned_data, list)
+    assert len(returned_data) > 0
+    returned_data = returned_data[0]
+    assert returned_data.data["test1"].asint == 42
+    assert returned_data.data["test2"].asint == 43
+    assert returned_data.data["test3"].asint == 42069
