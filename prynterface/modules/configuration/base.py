@@ -113,7 +113,6 @@ class ConfigParser:
             with open(path, "rb") as f:
                 data = f.read()
                 self.config = fix_double_backslash(json.loads(data))
-                print("debug")
         except json.decoder.JSONDecodeError as e:
             raise json.decoder.JSONDecodeError(
                 (

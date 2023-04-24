@@ -41,7 +41,7 @@ def test_simple_parsing():
     for line in lines:
         test_parser.add_line(line.encode())
 
-    test_parser.parse()
+    test_parser.detect()
     returned_data = test_parser.get_data()[0]
     assert returned_data["test1"] == {
         "type": "dict-float",
