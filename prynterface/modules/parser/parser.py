@@ -1,4 +1,6 @@
+from time import time
 from ..configuration.parsing import ParsingConfig
+from .helpers import LineWithInfo
 from .matcher import Detector, Extractor
 
 
@@ -23,7 +25,32 @@ class Parser:
     """
 
     def __init__(self, configuration: ParsingConfig) -> None:
-        self.config = configuration
-        self.detector = Detector(self.config.detectorcfg())
-        self.extractor = Extractor(self.config.extractorcfg())
-        self.parser = Converter(self.config.parsercfg())
+        self._config = configuration
+        self._detector = Detector(self._config.detectorcfg())
+        self._extractor = Extractor(self._config.extractorcfg())
+        self._converter = Converter(self._config.parsercfg())
+        self._linebuffer = []
+        self._total_lines = 0
+        self._total_chars = 0
+
+    def add_line(self, line: bytes) -> None:
+        linewinfo = LineWithInfo(
+            line,
+            self._total_lines,
+            time(),
+            self._total_chars,
+            self._total_chars + len(line),
+        )
+        self._linebuffer.append(linewinfo)
+        self._total_lines += 1
+        self._total_chars += len(line)
+
+    def parse(self) -> None:
+        constructed_string = "".join([line.line.decode() for line in self._linebuffer])
+        self._detector.set_data(constructed_string)
+        matches = self._detector.get_matches()
+        print(matches)
+
+
+if __name__ == "__main__":
+    pass

@@ -16,6 +16,31 @@ class UninitializedConfigException(Exception):
     pass
 
 
+def json_regex_decode(string: str):
+    """Decode a regex string from json.
+    The json library encodes regex strings with double backslashes.
+    This function replaces the double backslashes with single backslashes.
+    """
+    decoded = string.replace("\\\\", "\\")
+    # convert to raw string
+    return r"{}".format(decoded)
+
+
+def fix_double_backslash(json_data: dict) -> dict:
+    """Traverses a dict of arbitrary many dicts and fixs the double backslash
+    For whatever reason the default json library reads a double backslash
+    as two backslashes which is *** because it needs to be escaped to be valid json.
+    """
+    for k, v in json_data.items():
+        if isinstance(json_data[k], dict):
+            json_data[k] = fix_double_backslash(json_data[k])
+        elif k == "expression" and isinstance(json_data[k], str):
+            original = v
+            fixed = json_regex_decode(original)
+            json_data[k] = fixed
+    return json_data
+
+
 class ConfigParser:
     """Base class for handling loading and storing of config files."""
 
@@ -85,8 +110,10 @@ class ConfigParser:
                 json.decoder.JSONDecodeError: If the file is not a valid json file.
         """
         try:
-            with open(path, "r") as f:
-                self.config = json.load(f)
+            with open(path, "rb") as f:
+                data = f.read()
+                self.config = fix_double_backslash(json.loads(data))
+                print("debug")
         except json.decoder.JSONDecodeError as e:
             raise json.decoder.JSONDecodeError(
                 (

@@ -92,7 +92,7 @@ class SerialIO:
         except Exception as e:
             raise e
 
-    async def readline(self) -> tuple:
+    async def readline(self) -> bytes:
         """Reads a line of data from an initialized connection.
 
         Raises:
@@ -105,7 +105,8 @@ class SerialIO:
             raise NoConnectionException("No connection established.")
         try:
             self.linenumber += 1
-            return await self.reader.readline(), self.linenumber
+            line = await self.reader.readline()
+            return line
         except Exception as e:
             self.linenumber -= 1
             raise e

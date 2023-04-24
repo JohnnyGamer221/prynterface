@@ -37,7 +37,10 @@ def parser_fixture(config: parsing.ParsingConfig) -> parser.Parser:
 
 def test_simple_parsing():
     test_parser = parser.Parser(configfixture())
-    test_parser.add_data(TEST_DATA)
+    lines = TEST_DATA.splitlines()
+    for line in lines:
+        test_parser.add_line(line.encode())
+
     test_parser.parse()
     returned_data = test_parser.get_data()[0]
     assert returned_data["test1"] == {

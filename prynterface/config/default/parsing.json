@@ -1,50 +1,78 @@
 {
-	"echo": {
+	"test1": {
 		"detector": {
-			"expression": "(?:echo:.+)(?=\\s)\\n*",
+			"expression": "(?:\\s*)TestOne:.*\\n",
 			"type": "line"
 		},
 		"extractor": {
-			"expression": "(?<=echo:)(.+)",
-			"flags": "i",
-			"match_type": "findall"
+			"expressions": {
+				"test1": {
+					"expression": "(?:\\s*TestOne *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"test2": {
+					"expression": "(?:\\s*TestTwo *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"test3": {
+					"expression": "(?:\\s*TestThree *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				}
+			}
 		},
 		"parser": {
-			"functions": [
-				"parse_echo"
-			]
+			"types": {
+				"test1": "value",
+				"test2": "value",
+				"test3": "value"
+			}
 		}
 	},
-	"temp_info": {
+	"test2": {
 		"detector": {
-			"expression": "(?:\\bT\\d*:.*\\n+)",
-			"type": "line"
-		},
-		"extractor": {
-			"expression": "(?:^ *)(?:(?:([@\\w]+\\d*):((?:-?\\d+(?:\\.\\d+)?(?=\\D))|(?:\\?)))(?:\\s*\\\/((?:-?\\d+(?:\\.\\d+)?(?=\\D))|(?:\\?)))?(?: +|\\n))+",
-			"flags": "i",
-			"match_type": "findall"
-		},
-		"parser": {
-			"functions": [
-				"parse_temp_info"
-			]
-		}
-	},
-	"m48-z-repeatability": {
-		"detector": {
-			"expression": "(?:M48 Z-Probe Repeatability Test(?:.*\\n)+?Finished(?:.*\\n)+?ok\\n*)",
+			"expression": "This is the start of something in a block:\\n(?:\\n|.)*ok\\n",
 			"type": "block"
 		},
 		"extractor": {
-			"expression": "(?:\\bFinished[.!]?\\B.*\\n*)([a-zA-Z@ ]+(?=\\s*:\\s*[?\\d]))(?:\\s*:\\s*)(-?\\d+(?:\\.\\d+)?(?=\\D))(?:.|\\n)*(?=ok)",
-			"flags": "i",
-			"match_type": "findall"
+			"expressions": {
+				"mesh": {
+					"expression": "(?:Mesh:\\s*)([\\d\\s.,+-]+)(?:\\D)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posx": {
+					"expression": "(?:X *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posy": {
+					"expression": "(?:Y *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posz": {
+					"expression": "(?:Z *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"status": {
+					"expression": "(?:Status *: *)(FAIL|PASS)",
+					"flags": "i",
+					"type": "single"
+				}
+			}
 		},
 		"parser": {
-			"functions": [
-				"parse_m48_z_repeatability"
-			]
+			"types": {
+				"mesh": "mesh",
+				"posx": "value",
+				"posy": "value",
+				"posz": "value",
+				"status": "failpass"
+			}
 		}
 	}
 }
