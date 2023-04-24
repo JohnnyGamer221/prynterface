@@ -1,0 +1,78 @@
+{
+	"test1": {
+		"detector": {
+			"expression": "(?:\\s*)TestOne:.*\\n",
+			"type": "line"
+		},
+		"extractor": {
+			"expressions": {
+				"test1": {
+					"expression": "(?:\\s*TestOne *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"test2": {
+					"expression": "(?:\\s*TestTwo *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"test3": {
+					"expression": "(?:\\s*TestThree *: *)(\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				}
+			}
+		},
+		"parser": {
+			"types": {
+				"test1": "value",
+				"test2": "value",
+				"test3": "value"
+			}
+		}
+	},
+	"test2": {
+		"detector": {
+			"expression": "This is the start of something in a block:\\n(?:\\n|.)*ok\\n",
+			"type": "block"
+		},
+		"extractor": {
+			"expressions": {
+				"mesh": {
+					"expression": "(?:Mesh:\\s*)([\\d\\s.,+-]+)(?:\\D)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posx": {
+					"expression": "(?:X *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posy": {
+					"expression": "(?:Y *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"posz": {
+					"expression": "(?:Z *: *)((?:\\+|-?)\\d+(?:\\.\\d+)?)",
+					"flags": "i",
+					"type": "single"
+				},
+				"status": {
+					"expression": "(?:Status *: *)(FAIL|PASS)",
+					"flags": "i",
+					"type": "single"
+				}
+			}
+		},
+		"parser": {
+			"types": {
+				"mesh": "mesh",
+				"posx": "value",
+				"posy": "value",
+				"posz": "value",
+				"status": "failpass"
+			}
+		}
+	}
+}
