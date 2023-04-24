@@ -1,3 +1,5 @@
+import sys
+
 from .modules.configuration.parsing import ParsingConfig
 from .modules.configuration.printer import PrinterConfig
 from .modules.parser.parser import Parser

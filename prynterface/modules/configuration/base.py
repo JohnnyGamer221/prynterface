@@ -10,10 +10,35 @@ from typing import Union
 DEFAULT_CONFIG_DIR = "prynterface/config"
 
 
-class UninitializedConfigError(Exception):
+class UninitializedConfigException(Exception):
     """Raised when a config file is not loaded."""
 
     pass
+
+
+def json_regex_decode(string: str):
+    """Decode a regex string from json.
+    The json library encodes regex strings with double backslashes.
+    This function replaces the double backslashes with single backslashes.
+    """
+    decoded = string.replace("\\\\", "\\")
+    # convert to raw string
+    return r"{}".format(decoded)
+
+
+def fix_double_backslash(json_data: dict) -> dict:
+    """Traverses a dict of arbitrary many dicts and fixs the double backslash
+    For whatever reason the default json library reads a double backslash
+    as two backslashes which is *** because it needs to be escaped to be valid json.
+    """
+    for k, v in json_data.items():
+        if isinstance(json_data[k], dict):
+            json_data[k] = fix_double_backslash(json_data[k])
+        elif k == "expression" and isinstance(json_data[k], str):
+            original = v
+            fixed = json_regex_decode(original)
+            json_data[k] = fixed
+    return json_data
 
 
 class ConfigParser:
@@ -85,8 +110,9 @@ class ConfigParser:
                 json.decoder.JSONDecodeError: If the file is not a valid json file.
         """
         try:
-            with open(path, "r") as f:
-                self.config = json.load(f)
+            with open(path, "rb") as f:
+                data = f.read()
+                self.config = fix_double_backslash(json.loads(data))
         except json.decoder.JSONDecodeError as e:
             raise json.decoder.JSONDecodeError(
                 (
@@ -113,7 +139,7 @@ class ConfigParser:
     def load_selected(self) -> None:
         """Loads the currently selected config file."""
         if self.config_fn is None:
-            raise UninitializedConfigError("No config file selected.")
+            raise UninitializedConfigException("No config file selected.")
         try:
             self._load_file(self.config_path)
         except json.decoder.JSONDecodeError as e:
@@ -138,7 +164,7 @@ class ConfigParser:
                 KeyError: If the key is not found in the config file.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         try:
             return self.config[key]
         except KeyError:
@@ -154,7 +180,7 @@ class ConfigParser:
                 UnititializedConfigError: If the config file is not loaded.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         return self.config
 
     def set_key(self, key: str, value: dict) -> None:
@@ -169,7 +195,7 @@ class ConfigParser:
                 KeyError: If the key is not found in the config file.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         if key not in self.config:
             raise KeyError(f"Key '{key}' not found in config.")
 
