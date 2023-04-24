@@ -1,4 +1,12 @@
-from context import ParsingConfig, PrinterConfig, Parser, SerialIO, UserInterface
+if __name__ == "__main__":
+    # @todo this is fucked but i cant get it to run the tests and main otherwise
+    from modules.configuration.parsing import ParsingConfig
+    from modules.configuration.printer import PrinterConfig
+    from modules.parser.parser import Parser
+    from modules.sinterface.sinterface import SerialIO
+    from modules.ui.ui import UserInterface
+else:
+    from .context import ParsingConfig, PrinterConfig, Parser, SerialIO, UserInterface
 
 __TEST_DATA = """This is some test data we are going to parse.
 Just for the lols.
@@ -33,7 +41,8 @@ def main():
     lines = __TEST_DATA.splitlines()
     for line in lines:
         parser.add_line(line.encode() + b"\n")
-    parser.parse()
+    out = parser.parse()
+    print(out)
 
 
 if __name__ == "__main__":

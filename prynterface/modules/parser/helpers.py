@@ -91,6 +91,9 @@ class Value:
             return len(str(self.pre_decimal))
         return len(str(self.pre_decimal)) + len(str(self.post_decimal))
 
+    def __eq__(self, __value: object) -> bool:
+        return self.__str__() == __value.__str__()
+
     @property
     def asfloat(self) -> float:
         if self.no_value:
