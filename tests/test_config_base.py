@@ -4,6 +4,8 @@ import os
 from contextlib import nullcontext as does_not_raise
 from .context import base
 
+UninitConfigExc = base.UninitializedConfigException
+
 CONFIG_DIR = "tests/configs/base"
 
 GOOD_FILE = "default.json"

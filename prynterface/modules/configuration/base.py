@@ -10,7 +10,7 @@ from typing import Union
 DEFAULT_CONFIG_DIR = "prynterface/config"
 
 
-class UninitializedConfigError(Exception):
+class UninitializedConfigException(Exception):
     """Raised when a config file is not loaded."""
 
     pass
@@ -113,7 +113,7 @@ class ConfigParser:
     def load_selected(self) -> None:
         """Loads the currently selected config file."""
         if self.config_fn is None:
-            raise UninitializedConfigError("No config file selected.")
+            raise UninitializedConfigException("No config file selected.")
         try:
             self._load_file(self.config_path)
         except json.decoder.JSONDecodeError as e:
@@ -138,7 +138,7 @@ class ConfigParser:
                 KeyError: If the key is not found in the config file.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         try:
             return self.config[key]
         except KeyError:
@@ -154,7 +154,7 @@ class ConfigParser:
                 UnititializedConfigError: If the config file is not loaded.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         return self.config
 
     def set_key(self, key: str, value: dict) -> None:
@@ -169,7 +169,7 @@ class ConfigParser:
                 KeyError: If the key is not found in the config file.
         """
         if not self.is_loaded:
-            raise UninitializedConfigError("Config file not loaded.")
+            raise UninitializedConfigException("Config file not loaded.")
         if key not in self.config:
             raise KeyError(f"Key '{key}' not found in config.")
 
