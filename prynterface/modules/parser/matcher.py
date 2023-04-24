@@ -3,13 +3,7 @@ from .helpers import Match
 
 
 class Detector:
-    """@todo Implement Detector class
-    - Gets some data from SerialIO --> main --> Parser --> Detector
-    - Stores it in a buffer, must be complete lines.
-    - Runs regex on buffer according to config
-    - matches get extracted to free space from buffer
-    - Parser gets data via output buffer
-    """
+    """@todo Matching of block types, docs, flags, tests"""
 
     def __init__(self, detector_config: dict) -> None:
         self.config = detector_config
@@ -41,11 +35,7 @@ class Detector:
 
 
 class Extractor:
-    """@todo Implement Extractor class
-    - Gets data from Parser --> Detector --> Extractor
-    - Extracts match groups according to config
-    - Returns data to Parser
-    """
+    """@todo docs, tests, flags"""
 
     def __init__(self, extractor_config: dict) -> None:
         self.config = extractor_config

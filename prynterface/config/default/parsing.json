@@ -1,5 +1,5 @@
 {
-	"test1": {
+	"values": {
 		"detector": {
 			"expression": "TestOne:.*\\n",
 			"flags": "i",
@@ -29,7 +29,7 @@
 			}
 		}
 	},
-	"test2": {
+	"mesh": {
 		"detector": {
 			"expression": "This is the start of something in a block:\\n(?:\\n|.)*ok\\n",
 			"flags": "i",

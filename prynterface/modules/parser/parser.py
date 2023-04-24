@@ -1,61 +1,52 @@
 from time import time
 from dataclasses import dataclass
 from ..configuration.parsing import ParsingConfig
-from .helpers import LineWithInfo
+from .helpers import (
+    LineWithInfo,
+    MatchWithLineInfo,
+    MatchWithExtractedData,
+    MatchWithConvertedData,
+    convert_to_value,
+    ParsedData,
+)
 from .matcher import Detector, Extractor
-
-
-@dataclass
-class MatchWithLineInfo:
-    matched_string: str
-    start_index: int
-    end_index: int
-    key_name: str
-    lines: list[LineWithInfo]
-
-
-@dataclass
-class MatchWithExtractedData:
-    matched_string: str
-    start_index: int
-    end_index: int
-    key_name: str
-    lines: list[LineWithInfo]
-    extracted_data: dict
-
-
-@dataclass
-class MatchWithConvertedData:
-    matched_string: str
-    start_index: int
-    end_index: int
-    key_name: str
-    lines: list[LineWithInfo]
-    extracted_data: dict
-    converted_data: dict
 
 
 class Converter:
     """
-    @todo Implement Parser Helper class
-    - converts regex match groups to dict
-    - data types and annotations etc are defined in config
-    - return parsed data to Parser Controller
+    @todo A dict of functions would probably be better than this.
+    All different cutsom data types in one file and conversion functions for all of them.
+    Then we could have one function that takes a string and a type and returns the converted value.
+    -> split helper.py into multiple files
+    -> move all conversion functions to a new file
+    -> create a dict of functions
+    -> create a function that takes a string and a type and returns the converted value
+    -> use it in here
+    -> profit
     """
 
     def __init__(self, parser_config: dict) -> None:
         self.config = parser_config
 
     def convert(self, data: dict, key: str) -> dict:
-        pass
+        # print(data, key)
+        # print(self.config[key])
+        converted_data = {}
+        for name, value in data.items():
+            valuetype = self.config[key]["types"][name]
+            print(valuetype)
+            if valuetype == "value":
+                converted_data[name] = convert_to_value(key, value)
+            elif valuetype == "int":
+                converted_data[name] = int(value)
+            elif valuetype == "float":
+                converted_data[name] = float(value)
+        return converted_data
 
 
 class Parser:
     """
-    @todo Implement Parser Controller class
-    - set up detector, extractor, parser
-    - manage pipeline
-    - return parsed data to UI Controller
+    @todo Docstrings, tests, error handling,
     """
 
     def __init__(self, configuration: ParsingConfig) -> None:
@@ -69,6 +60,7 @@ class Parser:
         self.converter_output = []
         self._total_lines = 0
         self._total_chars = 0
+        self.parser_output = []
 
     def add_line(self, line: bytes) -> None:
         linewinfo = LineWithInfo(
@@ -114,6 +106,7 @@ class Parser:
                 extracted_data,
             )
             self.extractor_output.append(match_with_extracted_data)
+            self.detector_output.remove(match)
 
     def convert(self) -> None:
         for match in self.extractor_output:
@@ -130,12 +123,23 @@ class Parser:
                 converted_data,
             )
             self.converter_output.append(match_with_converted_data)
+            self.extractor_output.remove(match)
 
-    def parse(self) -> None:
+    def compress(self) -> None:
+        for match in self.converter_output:
+            parsed = ParsedData(
+                name=match.key_name,
+                data=match.converted_data,
+                timestamp=match.lines[0].rcv_time,
+                start=match.start_index,
+                end=match.end_index,
+            )
+            self.parser_output.append(parsed)
+            self.converter_output.remove(match)
+
+    def parse(self) -> list[ParsedData]:
         self.detect()
         self.extract()
         self.convert()
-
-
-if __name__ == "__main__":
-    pass
+        self.compress()
+        return self.parser_output
