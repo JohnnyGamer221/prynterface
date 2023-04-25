@@ -5,8 +5,8 @@
 #
 # Class should be controlled by the main module.
 
-from .gui.gui import GUI
-from .cli.cli import CLI
+from gui.gui import GUI
+from cli.cli import CLI
 
 
 class UserInterface:
