@@ -3,7 +3,7 @@
 		"detector": {
 			"expression": "TestOne:.*\\n",
 			"flags": "i",
-			"type": "line"
+			"detector_type": "line"
 		},
 		"extractor": {
 			"expressions": {
@@ -21,7 +21,7 @@
 				}
 			}
 		},
-		"parser": {
+		"converter": {
 			"types": {
 				"test1": "value",
 				"test2": "value",
@@ -33,7 +33,7 @@
 		"detector": {
 			"expression": "This is the start of something in a block:\\n(?:\\n|.)*ok\\n",
 			"flags": "i",
-			"type": "block"
+			"detector_type": "block"
 		},
 		"extractor": {
 			"expressions": {
