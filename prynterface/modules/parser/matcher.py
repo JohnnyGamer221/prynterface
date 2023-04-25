@@ -49,9 +49,6 @@ class Extractor:
             match = re.finditer(expression, data)
             for m in match:
                 buffer.append({key: m.group(1)})
-        # Merge buffer into one dict
-        # if a match is already in the dict, make a list of matches in the
-        # order they were found
         merged = {}
         for match in buffer:
             for key, value in match.items():
