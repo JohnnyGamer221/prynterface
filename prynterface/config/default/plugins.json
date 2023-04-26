@@ -1,0 +1,20 @@
+{
+	"pipeline": {
+		"preprocessor": {
+			"enabled": true,
+			"settings": {}
+		},
+		"detector": {
+			"enabled": true,
+			"settings": {}
+		},
+		"extractor": {
+			"enabled": true,
+			"settings": {}
+		},
+		"postprocessor": {
+			"enabled": true,
+			"settings": {}
+		}
+	}
+}

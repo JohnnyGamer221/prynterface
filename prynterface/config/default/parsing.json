@@ -1,5 +1,6 @@
 {
 	"values": {
+		"preprocessor": "true",
 		"detector": {
 			"expression": "TestOne:.*\\n",
 			"flags": "i",
@@ -21,7 +22,7 @@
 				}
 			}
 		},
-		"converter": {
+		"postprocessor": {
 			"types": {
 				"test1": "value",
 				"test2": "value",
@@ -30,6 +31,7 @@
 		}
 	},
 	"mesh": {
+		"preprocessor": "true",
 		"detector": {
 			"expression": "This is the start of something in a block:\\n(?:\\n|.)*ok\\n",
 			"flags": "i",
@@ -59,7 +61,7 @@
 				}
 			}
 		},
-		"parser": {
+		"postprocessor": {
 			"types": {
 				"mesh": "mesh",
 				"posx": "value",

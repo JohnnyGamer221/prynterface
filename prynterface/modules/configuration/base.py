@@ -27,10 +27,7 @@ def json_regex_decode(string: str):
 
 
 def fix_double_backslash(json_data: dict) -> dict:
-    """Traverses a dict of arbitrary many dicts and fixs the double backslash
-    For whatever reason the default json library reads a double backslash
-    as two backslashes which is *** because it needs to be escaped to be valid json.
-    """
+    """Traverses a dict of arbitrary many dicts and fixes the double backslash."""
     for k, v in json_data.items():
         if isinstance(json_data[k], dict):
             json_data[k] = fix_double_backslash(json_data[k])
